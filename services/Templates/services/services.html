@@ -1,0 +1,26 @@
+{% extends "ProyectoWebApp/base.html" %}
+{% load static %}
+{% block content %}
+
+<div>
+    {% if services %}
+    <ul style="list-style-type: none; padding: 0;">
+        {% for service in services %}
+        <li style="margin-bottom: 20px;">
+            <div style="width: 200px; height: 350px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: white; color: black;">
+                <img src="{{service.image.url}}" alt="{{service.title}}" style="width: 100%; height: auto;">
+                <div style="padding: 15px;">
+                    <h2 style="font-size: 1.5em; margin: 0 0 10px;">{{service.title}}</h2>
+                    <p style="font-size: 1em;">{{service.content}}</p>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are no services</p>
+    {% endif %}
+</div>
+
+
+{% endblock %}
