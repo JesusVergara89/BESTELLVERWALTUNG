@@ -5,6 +5,9 @@
 
 <div class="my_form">
     <form  action="" method="POST" style="text-align: center;">
+        {% if 'valid' in request.GET  %}
+        <p style="margin: 5px auto; color: white;">Se envio la información</p>
+        {% endif %}
         {% csrf_token %}
         <table style="margin: 20px auto; color: white;">{{Form_contac.as_table}}</table>
         <input type="submit" value="Enviar" style="width: 150px;">
