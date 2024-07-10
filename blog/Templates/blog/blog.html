@@ -1,0 +1,40 @@
+{% extends "ProyectoWebApp/base.html" %}
+{% load static %}
+{% block content %}
+
+{% if posts %}
+<ul style="list-style-type: none; padding: 0;">
+    {% for post in posts %}
+    <section class="page-section clearfix">
+        <div class="container">
+            <div class="intro">
+                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded"
+                    src="{% if post.image %} {{post.image.url}} {% endif %}" style="width: 50%;" alt="">
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-lower">{{post.title}}</span>
+                        <span class="section-heading-upper">{{post.content}}</span>
+                    </h2>
+                    <div style="text-align: left;  font-size: 0.9rem;">
+                        Author: {{post.author}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+</ul>
+{% else %}
+<p>There are no posts</p>
+{% endif %}
+
+<div style="width: 75%; margin: auto; height: auto; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; background-color: rgb(2, 92, 83);">
+    Categories:
+    {% for post in posts %}
+    {% for cat in post.categories.all %}
+    <p style="font-size: 1.1rem; color: white; font-weight: bold;">{{cat}}</p>
+    {% endfor %}
+    {% endfor %}
+</div>
+
+{% endblock %}
