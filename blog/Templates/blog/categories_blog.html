@@ -32,7 +32,7 @@
     Categories:
     {% for post in posts %}
     {% for cat in post.categories.all %}
-    <p style="font-size: 1.1rem; color: white; font-weight: bold;">{{cat}}</p>
+    <p style="font-size: 1.1rem; color: white; font-weight: bold;">{{cat.name}}</p>
     {% endfor %}
     {% endfor %}
 </div>
