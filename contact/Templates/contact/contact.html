@@ -1,0 +1,14 @@
+<html>
+{% extends "ProyectoWebApp/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="my_form">
+    <form  action="" method="POST" style="text-align: center;">
+        {% csrf_token %}
+        <table style="margin: 20px auto; color: white;">{{Form_contac.as_table}}</table>
+        <input type="submit" value="Enviar" style="width: 150px;">
+    </form>
+</div>
+
+{% endblock %}

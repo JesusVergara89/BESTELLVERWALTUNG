@@ -269,3 +269,9 @@ ul.errorlist {
   font-style: italic;
   color: red;
 }
+
+.my_form{
+  width: 50%;
+  margin: 20px auto;
+  background-color: rgba(255, 153, 0, 0.8);
+}
