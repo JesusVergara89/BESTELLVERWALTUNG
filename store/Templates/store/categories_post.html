@@ -1,0 +1,31 @@
+{% extends "ProyectoWebApp/base.html" %}
+{% load static %}
+{% block content %}
+
+{% if products %}
+<ul style="list-style-type: none; padding: 0;">
+    {% for product in products %}
+    <section class="page-section clearfix">
+        <div class="container">
+            <div class="intro">
+                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded"
+                    src="{% if product.image %} {{product.image.url}} {% endif %}" style="width: 50%;" alt="">
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-lower">{{product.name}}</span>
+                        <span class="section-heading-upper">{{product.description}}</span>
+                    </h2>
+                    <div style="text-align: left;  font-size: 0.9rem;">
+                        Price: {{product.price}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+</ul>
+{% else %}
+<p>There are no posts</p>
+{% endif %}
+
+{% endblock %}
