@@ -2,30 +2,32 @@
 {% load static %}
 {% block content %}
 
-{% if products %}
-<ul style="list-style-type: none; padding: 0;">
+<head>
+    <link href="{%  static 'ProyectoWebApp/css/store.css' %}" rel="stylesheet">
+</head>
+
+<div class="container_product">
+    {% if products %}
+
     {% for product in products %}
-    <section class="page-section clearfix">
-        <div class="container">
-            <div class="intro">
-                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded"
-                    src="{% if product.image %} {{product.image.url}} {% endif %}" style="width: 50%;" alt="">
-                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-                    <h2 class="section-heading mb-4">
-                        <span class="section-heading-lower">{{product.name}}</span>
-                        <span class="section-heading-upper">{{product.description}}</span>
-                    </h2>
-                    <div style="text-align: left;  font-size: 0.9rem;">
-                        Price: {{product.price}}
-                    </div>
-                </div>
-            </div>
+    <div class="product">
+
+        <img class="product_img" src="{% if product.image %} {{product.image.url}} {% endif %}" alt="">
+
+        <div class="product_descriptions">
+            <p class="product_name">{{product.name}}</p>
+            <p class="product_descript">{{product.description}}</p>
+            <p class="product_price">Precio: {{product.price}}</p>
         </div>
-    </section>
+
+        <button class="product_btn">Comprar</button>
+
+    </div>
+
     {% endfor %}
-</ul>
-{% else %}
-<p>There are no posts</p>
-{% endif %}
+    {% else %}
+    <p>There are no products</p>
+    {% endif %}
+</div>
 
 {% endblock %}
