@@ -4,7 +4,11 @@
 {% block content %}
 
 <div class="my_form">
-    <p>hello</p>
+    <form action="" method="post" style="text-align: center;">
+        {% csrf_token %}
+         {{form}}
+        <button  class="btn btn-success" type="submit">Registration</button>
+    </form>
 </div>
 
 {% endblock %}
