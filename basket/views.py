@@ -23,7 +23,7 @@ def product_substract(request, product_id):
     return redirect("store")
 
 
-def basket_clean(request, product_id):
+def basket_clean(request):
     _basket= basket(request)
     _basket.clean_basket()
     return redirect("store")

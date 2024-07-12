@@ -22,6 +22,7 @@ class basket:
             for key, value in self.basket_.items():
                 if key == str(product.id):
                     value["quantity"] = value["quantity"] + 1
+                    value["price"] = float(value["price"]) + product.price
                     break
         self.save_basket()
     
@@ -39,6 +40,7 @@ class basket:
         for key, value in self.basket_.items():
             if key == str(product.id):
                 value["quantity"] = value["quantity"] - 1
+                value["price"] = float(value["price"]) - product.price
                 if value["quantity"] < 1:
                     self.delete_product(product)
                     break

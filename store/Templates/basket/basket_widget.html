@@ -3,9 +3,9 @@
 
         <tr>
 
-        <th colspan="3" class="text-center">
-            Shopping basket
-        </th>
+            <th colspan="3" class="text-center">
+                Shopping basket
+            </th>
 
         </tr>
 
@@ -19,15 +19,15 @@
     <tbody>
         {% if request.session.basket.items %}
         {% for key, value in request.session.basket.items %}
-            <tr class="text-center">
-                <td>{{value.name}}</td>
-                <td>{{value.quantity}}</td>
-                <td>
-                    <a href="{% url 'basket:add_product' value.product_id %}" class="btn btn-sm btn-success">+</a>
-                    <a href="{% url 'basket:product_substract' value.product_id %}" class="btn btn-sm btn-success">-</a><br>
-                    {{value.price}} Euro
-                </td>
-            </tr>
+        <tr class="text-center">
+            <td class="text-center">{{value.name}}</td>
+            <td class="text-center">{{value.quantity}}</td>
+            <td class="text-center">
+                <a href="{% url 'basket:add_product' value.product_id %}" class="btn btn-sm btn-success">+</a>
+                <a href="{% url 'basket:product_substract' value.product_id %}" class="btn btn-sm btn-success">-</a><br>
+                {{value.price}} Euro
+            </td>
+        </tr>
         {% endfor %}
         {% else %}
         <tr>
@@ -42,6 +42,17 @@
     <tr>
         <td colspan="3">
             Total: {{total_basket}}
+        </td>
+    </tr>
+    <tfoot>
+
+    </tfoot>
+    </tbody>
+    <tr>
+        <td colspan="3">
+            <div class="card-footer text-center">
+                <a href="{% url 'basket:basket_clean' %}" class="btn btn-warning">Delete basket</a>
+            </div>
         </td>
     </tr>
     <tfoot>
