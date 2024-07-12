@@ -6,28 +6,33 @@
     <link href="{%  static 'ProyectoWebApp/css/store.css' %}" rel="stylesheet">
 </head>
 
-<div class="container_product">
-    {% if products %}
+<div class="container_store">
+    <div class="container_products">
+        {% if products %}
 
-    {% for product in products %}
-    <div class="product">
-        <a href="{% url 'singleproduct' product.id %}" class="product_seemore">Ver</a>
-        <img class="product_img" src="{% if product.image %} {{product.image.url}} {% endif %}" alt="">
+        {% for product in products %}
+        <div class="product">
+            <a href="{% url 'singleproduct' product.id %}" class="product_seemore">Sehen</a>
+            <img class="product_img" src="{% if product.image %} {{product.image.url}} {% endif %}" alt="">
 
-        <div class="product_descriptions">
-            <p class="product_name">{{product.name}}</p>
-            <p class="product_descript">{{product.description}}</p>
-            <p class="product_price">Precio: {{product.price}}</p>
+            <div class="product_descriptions">
+                <p class="product_name">{{product.name}}</p>
+                <p class="product_descript">{{product.description}}</p>
+                <p class="product_price">Precio: {{product.price}}</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{% url 'basket:add_product'  product.id %}" class="btn btn-warning">Bethzalen</a>
+            </div>
         </div>
 
-        <button class="product_btn">Comprar</button>
-
+        {% endfor %}
+        {% else %}
+        <p>There are no products</p>
+        {% endif %}
     </div>
-
-    {% endfor %}
-    {% else %}
-    <p>There are no products</p>
-    {% endif %}
+    <div class="container_basket">
+        {% include "basket/basket_widget.html" %}
+    </div>
 </div>
 
 

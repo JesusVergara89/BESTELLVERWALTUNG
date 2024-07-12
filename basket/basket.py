@@ -6,8 +6,8 @@ class basket:
         basket_=self.session.get("basket")
         if not basket_:
             basket_ = self.session["basket"] = {}
-        else:
-            basket_ = basket_
+        #else:
+        self.basket_ = basket_
 
     def add(self, product):
         if (str(product.id) not in self.basket_.keys()):
@@ -30,23 +30,20 @@ class basket:
         self.session.modified = True
     
     def delete_product(self, product):
-        product.id = str(product.id)
-        if product.id in self. basket_:
-            del self.basket_[product]
+        product_id = str(product.id)
+        if product_id in self.basket_:
+            del self.basket_[product_id]
             self.save_basket()
     
     def substract_product(self, product):
         for key, value in self.basket_.items():
             if key == str(product.id):
-                if value["quantity"] <= 1:
-                    self.delete_product()
-                else:
-                    value["quantity"] = value["quantity"] - 1
-                    if value["quantity"] < 1:
-                      self.delete_product()
+                value["quantity"] = value["quantity"] - 1
+                if value["quantity"] < 1:
+                    self.delete_product(product)
                     break
         self.save_basket()
     
     def clean_basket(self):
-        basket_=self.session["basket"] = {}
+        self.session["basket"] = {}
         self.session.modified = True

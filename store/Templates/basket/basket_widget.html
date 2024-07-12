@@ -1,0 +1,50 @@
+<table class="table table_bordered" style="color: white;">
+    <thead>
+
+        <tr>
+
+        <th colspan="3" class="text-center">
+            Shopping basket
+        </th>
+
+        </tr>
+
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        {% if request.session.basket.items %}
+        {% for key, value in request.session.basket.items %}
+            <tr class="text-center">
+                <td>{{value.name}}</td>
+                <td>{{value.quantity}}</td>
+                <td>
+                    <a href="{% url 'basket:add_product' value.product_id %}" class="btn btn-sm btn-success">+</a>
+                    <a href="{% url 'basket:product_substract' value.product_id %}" class="btn btn-sm btn-success">-</a><br>
+                    {{value.price}} Euro
+                </td>
+            </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">
+                <div class="alert alert-danger text-center">
+                    Not podructs is basket yet!
+                </div>
+            </td>
+        </tr>
+        {% endif %}
+    </tbody>
+    <tr>
+        <td colspan="3">
+            Total: {{total_basket}}
+        </td>
+    </tr>
+    <tfoot>
+
+    </tfoot>
+</table>
