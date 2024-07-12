@@ -7,11 +7,9 @@
 </head>
 
 <div class="container_product">
-    {% if products %}
+    {% if product %}
+    <div class="product ">
 
-    {% for product in products %}
-    <div class="product">
-        <a href="{% url 'singleproduct' product.id %}" class="product_seemore">Ver</a>
         <img class="product_img" src="{% if product.image %} {{product.image.url}} {% endif %}" alt="">
 
         <div class="product_descriptions">
@@ -23,27 +21,9 @@
         <button class="product_btn">Comprar</button>
 
     </div>
-
-    {% endfor %}
     {% else %}
     <p>There are no products</p>
     {% endif %}
 </div>
-
-
-
-<div
-    style="width: 75%; margin: auto; height: auto; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; background-color: rgb(2, 92, 83);">
-    Categories:
-    {% for category in categories %}
-    <a href="{% url 'categoriesproducts' category.id %}">{{category.name}}</a>
-    {% endfor %}
-</div>
-
-<!----
-
-   
--->
-
 
 {% endblock %}

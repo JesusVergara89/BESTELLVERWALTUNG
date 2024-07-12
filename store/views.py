@@ -19,3 +19,7 @@ def categories_products(request, _id):
     categ_=Store_category.objects.get(id=_id)
     product_=Product.objects.filter(category_id = categ_)
     return render(request, 'store/categories_post.html', {'products': product_})
+
+def single_product(request, _id):
+    product_ = Product.objects.get(id=_id)
+    return render(request, 'store/singleproduct.html', {'product': product_})
