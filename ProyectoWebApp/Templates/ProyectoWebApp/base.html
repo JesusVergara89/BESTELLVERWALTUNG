@@ -27,6 +27,7 @@
   <div style="width: 100%; text-align: right; color: white; font-size: 1.1rem; font-weight: bold;">
     {% if user.is_authenticated %}
     <span style="margin-right: 50px;">Hallo {{user.username}}</span>
+    <a href="{% url 'closesession' %}" style="margin-right: 50px;">Close session</a>
     {% else %}
     <a href="#">Login</a> <a  href="{% if request.path == '/authentication/' %} # {% else %} authentication {% endif %}">Register</a>
     {% endif %}

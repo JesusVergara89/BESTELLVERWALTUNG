@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib import messages
 # Create your views here.
 
@@ -21,3 +21,7 @@ class VRegister(View):
             for msg in form.error_messages:
                 messages.error(request, form.error_messages[msg])
             return render(request, "authentication/authentication.html", {"form": form})
+
+def closeSession(request):
+    logout(request)
+    return redirect("home")
