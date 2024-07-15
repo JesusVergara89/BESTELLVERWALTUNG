@@ -6,6 +6,8 @@
     <link href="{%  static 'ProyectoWebApp/css/store.css' %}" rel="stylesheet">
 </head>
 
+{% if request.user.is_authenticated %}
+
 <div class="container_store">
     <div class="container_products">
         {% if products %}
@@ -30,13 +32,19 @@
         <p>There are no products</p>
         {% endif %}
     </div>
+
     <div class="container_basket">
         {% include "basket/basket_widget.html" %}
     </div>
+
 </div>
+{% else %}
+<div class="container_store">
+    <span class="alert alert-danger text-center">You have to loggin first</span>
+</div>
+{% endif %}
 
-
-
+{% if request.user.is_authenticated %}
 <div
     style="width: 75%; margin: auto; height: auto; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; background-color: rgb(2, 92, 83);">
     Categories:
@@ -44,6 +52,9 @@
     <a href="{% url 'categoriesproducts' category.id %}">{{category.name}}</a>
     {% endfor %}
 </div>
+{% else %}
+<div></div>
+{% endif %}
 
 <!----
 

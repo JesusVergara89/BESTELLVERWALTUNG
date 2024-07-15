@@ -29,7 +29,7 @@
     <span style="margin-right: 50px;">Hallo {{user.username}}</span>
     <a href="{% url 'closesession' %}" style="margin-right: 50px;">Close session</a>
     {% else %}
-    <a href="{%  url 'loggear' %}">Login</a> <a  href="{% if request.path == '/authentication/' %} # {% else %} authentication {% endif %}">Register</a>
+    <a href="{%  url 'loggear' %}">Login</a> <a  href="{% url 'authentication' %}">Register</a>
     {% endif %}
   </div>
 

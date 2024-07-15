@@ -1,15 +1,11 @@
 class basket:
 
     def __init__(self, request):
-        """if request.user.is_authenticated:
-            self.request=request
-            self.session=request.session
-            basket_=self.session.get("basket")
-            if not basket_:
-               basket_ = self.session["basket"] = {}
-            else:
-                self.basket_ = basket_
-        else:"""
+        self.request=request
+        self.session=request.session
+        basket_=self.session.get("basket")
+        if not basket_:
+            basket_ = self.session["basket"] = {}
         self.basket_ = basket_
 
     def add(self, product):

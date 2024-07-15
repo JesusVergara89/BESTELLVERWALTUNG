@@ -7,8 +7,13 @@
 <div class="my_form">
     <form action="" method="post" style="text-align: center;">
         {% csrf_token %}
-         {{form|crispy}}
-        <button  class="btn btn-success" type="submit">Login</button>
+        {% if messages %}
+        {% for msj in messages %}
+        <span class="alert alert-{{msj.tags}}">{{msj}}</span>
+        {% endfor %}
+        {% endif %}
+        {{form|crispy}}
+        <button class="btn btn-success" type="submit">Login</button>
     </form>
 </div>
 
