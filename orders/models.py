@@ -17,7 +17,7 @@ class Orders(models.Model):
         ordering=['id']
     
     def __str__(self):
-        return self.id
+        return str(self.id)
     
     @property
     def total(self):
@@ -27,13 +27,13 @@ class Orders(models.Model):
 
 class orders_line(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
-    product_id=models.ForeignKey(Product, on_delete=models.CASCADE)
-    order_id=models.ForeignKey(Orders, on_delete=models.CASCADE)
+    product=models.ForeignKey(Product, on_delete=models.CASCADE)
+    order=models.ForeignKey(Orders, on_delete=models.CASCADE)
     quantity=models.IntegerField(default=1)
     created_At = models.DateTimeField(auto_now=True)
     
     def __str__(self):
-        return "{} unidades de {}".format(self.quantity, self.product_id)
+        return "{} unidades de {}".format(self.quantity, self.product)
     
     class Meta:
         db_table='orders_lines'
