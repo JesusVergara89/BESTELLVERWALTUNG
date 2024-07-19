@@ -13,7 +13,6 @@ import os
 from django.contrib.messages import constants as errormsj 
 from pathlib import Path
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +26,7 @@ SECRET_KEY = 'django-insecure-*c!o&)bgg*&sphp008v2yz(^i8lqhq^eg@5i)9@6pql3eu^qm-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
